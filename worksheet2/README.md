@@ -1,27 +1,29 @@
-# Getting started
+# Networking Brokers
 
 ## Prerequisites
  
 -   worksheet1
--   A loopback address configured
+-   A loopback address configured  
+    
+    route add -net 224.0.0.0 netmask 240.0.0.0 dev lo
 
 ## Creating 2 Clustered Brokers
 
 -   create broker 1
 
 ```code
-$ARTEMIS_HOME/bin/artemis create  --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword broker1
+(A_MQ_Install_Dir)/bin/artemis create  --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword broker1
 ```
 -   create broker 2
 
 ```code
- $ARTEMIS_HOME/bin/artemis create  --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword --port-offset 100 broker2
+(A_MQ_Install_Dir)/bin/artemis create  --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword --port-offset 100 broker2
 ```
 
 -   start both brokers
 ```code
-(A_MQ_Instance_Dir)/bin/artemis create broker1
-(A_MQ_Instance_Dir)/bin/artemis create broker2
+(broker1_home)/bin/artemis create broker1
+(broker2_home)/bin/artemis create broker2
 ```
 
 After some initial negotiation you should see each broker log that a bridge has been created.
@@ -41,13 +43,13 @@ Both brokers need to be configured with the same anycast queue definition
   </addresses>
 ```
 
--   run 2 consumers 1 connected to each broker
+-   from the worksheet2 directory run 2 consumers 1 connected to each broker
 ```code
 mvn verify -PqueueReceiver1
 mvn verify -PqueueReceiver2                                      
 ```
 
--   run a producer to send 10 messages
+-   from the worksheet2 directory run a producer to send 10 messages
 ```code
 mvn verify -PqueueSender
 ```
@@ -85,13 +87,13 @@ Both brokers need to be configured with the same anycast queue definition
    </addresses>
 ```
 
--   run 2 consumers 1 connected to each broker
+-   from the worksheet2 directory run 2 consumers 1 connected to each broker
 ```code
 mvn verify -PtopicReceiver1
 mvn verify -PtopicReceiver2                                      
 ```
 
--   run a producer to send 10 messages
+-   from the worksheet2 directory run a producer to send 10 messages
 ```code
 mvn verify -PtopicSender
 ```

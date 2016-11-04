@@ -44,8 +44,6 @@ public class TopicReceiver {
          Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
       )
       {
-
-         // Step 6. Create a JMS Message Consumer
          MessageConsumer consumer = session.createConsumer(topic);
          while (true) {
             System.out.println("Awaiting message");

@@ -1,25 +1,33 @@
 # Getting started
 ## Install prerequisites
 
-### Fedora
+JDK 1.8
+maven 3
+LibAIO (optional) 
+-   Fedora - 'yum install libaio'
+-   Mac - ''
 
-### Mac
 
 ### Install Broker
+
 Install A-MQ7 download zip from ? and install into ?
 
 ### Create an instance
 
 Create an instance of A-MQ7
 ```code
-(A_MQ_Instance_Dir)/bin/artemis create myBroker
+(A_MQ_Install_Dir)/bin/artemis create myBroker
 ```
 ### Test The Broker with the CLI and Console
-In a separate shell run the CLI to consume from a default address
+Start the broker
 ```code
-(A_MQ_Instance_Dir)/bin/artemis consumer
+(myBroker_home)/bin/artemis run
 ```
-In a separate shell run the CLI to produce to the same default address
+In a separate shell run the CLI to consume from a default address from the worksheet1 directory 
+```code
+(myBroker_home)/bin/artemis consumer
+```
+In a separate shell run the CLI to produce to the same default address from the worksheet1 directory 
 ```code
 (A_MQ_Instance_Dir)/bin/artemis producer
 ```
@@ -40,11 +48,11 @@ Goto http://localhost:8161/hawtio/login and log in using the default user/pass y
 ```
 
 -   Start The broker
--   Send some messages
+-   from the worksheet1 directory Send some messages
 ```code
 mvn verify -PqueueSender
 ```
--   Receive some messages
+-   from the worksheet1 directory Receive some messages
 ```code
 mvn verify -PqueueReceiver
 ```
@@ -59,11 +67,11 @@ mvn verify -PqueueReceiver
 ```
 
 -   Start The broker
--   Send some messages
+-   from the worksheet1 directory Send some messages
 ```code
 mvn verify -PtopicSender
 ```
--   Receive some messages
+-   from the worksheet1 directory Receive some messages
 ```code
 mvn verify -PtopicReceiver
 ```
@@ -101,11 +109,11 @@ Connection connection = cf.createConnection("myuser", "mypassword");
 </security-setting>
 ```
 
--  Send some messages
+-  from the worksheet1 directory Send some messages
    ```code
    mvn verify -PqueueSender
    ```
--   Receive some messages (this will fail)
+-   from the worksheet1 directory Receive some messages (this will fail)
 ```code
 mvn verify -PqueueReceiver
 ``` 

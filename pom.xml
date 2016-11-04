@@ -8,6 +8,7 @@
    <modules>
       <module>worksheet1</module>
       <module>worksheet2</module>
+      <module>worksheet3</module>
    </modules>
 
 </project>
