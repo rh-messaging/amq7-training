@@ -47,7 +47,7 @@ connectionFactory.ConnectionFactory=(tcp://localhost:61616?ha=true&retryInterval
 
 Notice we have configured both brokers in the connection factory but could have used udp
  
--   from the worksheet3 directoryStart a queue receiver
+-   from the worksheet3 directory start a queue receiver
 
 ```code
 mvn verify -PqueueReceiver
@@ -144,7 +144,7 @@ You will see the live take over
 you will now see the live broker replicate back then take over as live
  
  
--   from the worksheet3 directory Start a queue receiver
+-   from the worksheet3 directory start a queue receiver
 
 ```code
 mvn verify -PqueueReceiver

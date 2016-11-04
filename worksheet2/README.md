@@ -43,7 +43,7 @@ Both brokers need to be configured with the same anycast queue definition
   </addresses>
 ```
 
--   from the worksheet2 directory run 2 consumers 1 connected to each broker
+-   from the worksheet2 directory run 2 consumers connected to each broker
 ```code
 mvn verify -PqueueReceiver1
 mvn verify -PqueueReceiver2                                      
@@ -87,7 +87,7 @@ Both brokers need to be configured with the same anycast queue definition
    </addresses>
 ```
 
--   from the worksheet2 directory run 2 consumers 1 connected to each broker
+-   from the worksheet2 directory run 2 consumers connected to each broker
 ```code
 mvn verify -PtopicReceiver1
 mvn verify -PtopicReceiver2                                      
