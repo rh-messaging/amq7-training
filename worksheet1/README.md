@@ -2,10 +2,41 @@
 ## Install prerequisites
 
 JDK 1.8
-maven 3
-LibAIO (optional) 
--   Fedora - 'yum install libaio'
--   Mac - ''
+ 
+OpenJDK on Fedora
+    
+    yum install java-1.8.0-openjdk-devel
+    yun install java-1.8.0-openjdk
+    
+Oracle JDK with  Mac
+
+    http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+    
+Maven 3
+
+Download 3.3.9 from https://maven.apache.org/download.cgi ans unzip somewhere.
+make sure it is available on your path
+
+Git client
+
+Fedora
+    
+    yum install git on Fedora
+
+Mac 
+    follow instructions at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+    
+
+LibAIO (optional Fedora only) - Fedora - 'yum install libaio'
+
+
+Also checkout the worksheets from git
+
+    git clone https://github.com/rh-messaging/amq7-training.git
+    
+Or if you haven't installed git you can downlod it from https://github.com/rh-messaging/amq7-training
+by clicking 'clone or download'.
+
 
 
 ### Install Broker
