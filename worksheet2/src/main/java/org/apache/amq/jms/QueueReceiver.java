@@ -49,11 +49,10 @@ public class QueueReceiver {
       {
          connection.start();
          MessageConsumer consumer = session.createConsumer(queue);
-         while (true) {
-            System.out.println("Awaiting message");
-            TextMessage message = (TextMessage) consumer.receive();
-            System.out.println("message = " + message.getText());
-            message = (TextMessage) consumer.receiveNoWait();
+         System.out.println("Awaiting message");
+         TextMessage message = (TextMessage) consumer.receive();
+         System.out.println("message = " + message.getText());
+         while((message=(TextMessage) consumer.receiveNoWait())!=null){
             System.out.println("message = " + message.getText());
          }
       }
