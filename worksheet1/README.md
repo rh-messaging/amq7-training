@@ -48,11 +48,11 @@ Goto http://localhost:8161/hawtio/login and log in using the default user/pass y
 ```
 
 -   Start The broker
--   from the worksheet1 directory Send some messages
+-   from the worksheet1 directory send some messages
 ```code
 mvn verify -PqueueSender
 ```
--   from the worksheet1 directory Receive some messages
+-   from the worksheet1 directory receive some messages
 ```code
 mvn verify -PqueueReceiver
 ```
@@ -67,11 +67,11 @@ mvn verify -PqueueReceiver
 ```
 
 -   Start The broker
--   from the worksheet1 directory Send some messages
+-   from the worksheet1 directory send some messages
 ```code
 mvn verify -PtopicSender
 ```
--   from the worksheet1 directory Receive some messages
+-   from the worksheet1 directory receive some messages
 ```code
 mvn verify -PtopicReceiver
 ```
@@ -109,11 +109,11 @@ Connection connection = cf.createConnection("myuser", "mypassword");
 </security-setting>
 ```
 
--  from the worksheet1 directory Send some messages
-   ```code
-   mvn verify -PqueueSender
-   ```
--   from the worksheet1 directory Receive some messages (this will fail)
+-  from the worksheet1 directory send some messages
+```code
+mvn verify -PqueueSender
+```
+-   from the worksheet1 directory receive some messages (this will fail)
 ```code
 mvn verify -PqueueReceiver
 ``` 
