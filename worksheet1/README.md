@@ -117,3 +117,5 @@ mvn verify -PqueueSender
 ```code
 mvn verify -PqueueReceiver
 ``` 
+
+Play around with security to see how to allow the example to send
