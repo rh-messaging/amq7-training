@@ -37,7 +37,7 @@ public class QueueSender {
       ConnectionFactory cf = (ConnectionFactory) initialContext.lookup("ConnectionFactory");
       try
       (
-         Connection connection = cf.createConnection();
+            Connection connection = cf.createConnection("myuser", "mypassword");
          Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
       )
       {

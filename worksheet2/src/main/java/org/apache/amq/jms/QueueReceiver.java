@@ -53,8 +53,6 @@ public class QueueReceiver {
             System.out.println("Awaiting message");
             TextMessage message = (TextMessage) consumer.receive();
             System.out.println("message = " + message.getText());
-            message = (TextMessage) consumer.receiveNoWait();
-            System.out.println("message = " + message.getText());
          }
       }
    }

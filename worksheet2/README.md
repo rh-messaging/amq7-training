@@ -22,8 +22,8 @@
 
 -   start both brokers
 ```code
-(broker1_home)/bin/artemis create broker1
-(broker2_home)/bin/artemis create broker2
+(broker1_home)/bin/artemis run broker1
+(broker2_home)/bin/artemis run broker2
 ```
 
 After some initial negotiation you should see each broker log that a bridge has been created.
@@ -31,6 +31,8 @@ After some initial negotiation you should see each broker log that a bridge has 
 ## clustering a queue
 
 Both brokers need to be configured with the same anycast queue definition
+
+-   stop both brokers
 
 -   Add an anycast queue configuration for both brokers
 ```xml
