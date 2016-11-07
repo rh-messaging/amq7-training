@@ -46,11 +46,10 @@ public class TopicReceiver {
       {
          connection.start();
          MessageConsumer consumer = session.createConsumer(topic);
-         while (true) {
-            System.out.println("Awaiting message");
-            TextMessage message = (TextMessage) consumer.receive();
-            System.out.println("message = " + message.getText());
-            message = (TextMessage) consumer.receiveNoWait();
+         System.out.println("Awaiting message");
+         TextMessage message = (TextMessage) consumer.receive();
+         System.out.println("message = " + message.getText());
+         while((message=(TextMessage) consumer.receiveNoWait())!=null){
             System.out.println("message = " + message.getText());
          }
       }
