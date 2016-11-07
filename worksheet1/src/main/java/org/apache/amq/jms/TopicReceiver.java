@@ -31,7 +31,7 @@ public class TopicReceiver {
    public static void main(String[] args) throws Exception {
 
       InitialContext initialContext = new InitialContext();
-      Topic topic = (Topic) initialContext.lookup("queue/exampleTopic");
+      Topic topic = (Topic) initialContext.lookup("topic/exampleTopic");
       ConnectionFactory cf = (ConnectionFactory) initialContext.lookup("ConnectionFactory");
       try
       (
@@ -41,9 +41,9 @@ public class TopicReceiver {
       {
          connection.start();
          MessageConsumer consumer = session.createConsumer(topic);
-         TextMessage message = (TextMessage) consumer.receive(5000);
+         TextMessage message = (TextMessage) consumer.receive();
          System.out.println("message = " + message.getText());
-         message = (TextMessage) consumer.receiveNoWait();
+         message = (TextMessage) consumer.receive();
          System.out.println("message = " + message.getText());
          System.exit(0);
       }

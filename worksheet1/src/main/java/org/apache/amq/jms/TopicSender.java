@@ -32,7 +32,7 @@ public class TopicSender {
    public static void main(String[] args) throws Exception {
 
       InitialContext initialContext = new InitialContext();
-      Topic topic = (Topic) initialContext.lookup("queue/exampleTopic");
+      Topic topic = (Topic) initialContext.lookup("topic/exampleTopic");
       ConnectionFactory cf = (ConnectionFactory) initialContext.lookup("ConnectionFactory");
       try
       (
@@ -40,14 +40,9 @@ public class TopicSender {
          Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
       )
       {
-
-         // Step 6. Create a JMS Message Producer
          MessageProducer producer = session.createProducer(topic);
-
-         // Step 7. Create 2 Text Messages
          TextMessage message_1 = session.createTextMessage("this is the 1st message");
          TextMessage message_2 = session.createTextMessage("this is the 2nd message");
-
          producer.send(message_1);
          producer.send(message_2);
          System.out.println("2 messages sent");
