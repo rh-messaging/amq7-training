@@ -42,8 +42,7 @@ public class QueueReceiver {
          Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
       )
       {
-
-         // Step 6. Create a JMS Message Producer
+         connection.start();
          MessageConsumer consumer = session.createConsumer(queue);
          TextMessage message = (TextMessage) consumer.receive(5000);
          System.out.println("message = " + message.getText());

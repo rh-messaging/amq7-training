@@ -42,7 +42,7 @@ public class QueueReceiver {
          Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
       )
       {
-
+         connection.start();
          MessageConsumer consumer = session.createConsumer(queue);
          while (true) {
             TextMessage message = (TextMessage) consumer.receive();

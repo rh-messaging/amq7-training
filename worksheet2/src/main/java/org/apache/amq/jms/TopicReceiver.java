@@ -44,6 +44,7 @@ public class TopicReceiver {
          Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
       )
       {
+         connection.start();
          MessageConsumer consumer = session.createConsumer(topic);
          while (true) {
             System.out.println("Awaiting message");
