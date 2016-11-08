@@ -31,7 +31,7 @@ public class TopicSender {
    public static void main(String[] args) throws Exception {
 
       InitialContext initialContext = new InitialContext();
-      Topic topic = (Topic) initialContext.lookup("queue/exampleTopic");
+      Topic topic = (Topic) initialContext.lookup("topic/exampleTopic");
       ConnectionFactory cf = (ConnectionFactory) initialContext.lookup("ConnectionFactory");
       try
       (

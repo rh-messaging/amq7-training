@@ -34,7 +34,7 @@ public class TopicReceiver {
       Hashtable<Object, Object> environment = new Hashtable<>();
       environment.put("java.naming.factory.initial", "org.apache.activemq.artemis.jndi.ActiveMQInitialContextFactory");
       environment.put("connectionFactory.ConnectionFactory", "tcp://localhost:" + port);
-      environment.put("queue.queue/exampleQueue", "exampleQueue");
+      environment.put("topic.topic/exampleTopic", "exampleTopic");
       InitialContext initialContext = new InitialContext(environment);
       Topic topic = (Topic) initialContext.lookup("topic/exampleTopic");
       ConnectionFactory cf = (ConnectionFactory) initialContext.lookup("ConnectionFactory");
@@ -49,8 +49,6 @@ public class TopicReceiver {
          while (true) {
             System.out.println("Awaiting message");
             TextMessage message = (TextMessage) consumer.receive();
-            System.out.println("message = " + message.getText());
-            message = (TextMessage) consumer.receiveNoWait();
             System.out.println("message = " + message.getText());
          }
       }
