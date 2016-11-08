@@ -98,14 +98,19 @@ mvn verify -PqueueReceiver
 ```
 
 -   Start The broker
+
+-   from the worksheet1 directory receive some messages
+
+```code
+mvn verify -PtopicReceiver
+```         
+
 -   from the worksheet1 directory send some messages
+
 ```code
 mvn verify -PtopicSender
 ```
--   from the worksheet1 directory receive some messages
-```code
-mvn verify -PtopicReceiver
-```
+   
 
 ## Securing a queue
 

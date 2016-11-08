@@ -22,8 +22,8 @@
 
 -   start both brokers
 ```code
-(broker1_home)/bin/artemis run broker1
-(broker2_home)/bin/artemis run broker2
+(broker1_home)/bin/artemis run 
+(broker2_home)/bin/artemis run 
 ```
 
 After some initial negotiation you should see each broker log that a bridge has been created.
