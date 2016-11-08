@@ -76,7 +76,7 @@ NB you will see that only 1 consumer received the messages as they were load bal
 <message-load-balancing>STRICT</message-load-balancing>
 ```
 
--   now re run the exercise
+-   now re run the exercise and notice that both the consumers receive messages even when disconnected.
 
 ## clustering a topic
 
