@@ -56,7 +56,7 @@ mvn verify -PqueueReceiver
 -   from the worksheet3 directory start the sender
 
 ```code
-mvn verify -PqueueReceiver
+mvn verify -PqueueSender
 ```
 
 you will see messages produced and consumed
@@ -153,7 +153,7 @@ mvn verify -PqueueReceiver
 -   from the worksheet3 directory start the sender
 
 ```code
-mvn verify -PqueueReceiver
+mvn verify -PqueueSender
 ```
 
 - play around killing the brokers

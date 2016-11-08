@@ -47,8 +47,14 @@ public class QueueSender {
          int msg = 0;
          while (true) {
             TextMessage message = session.createTextMessage("this is the message" + (msg++));
-            producer.send(message);
-            System.out.println("Message sent " + msg);
+            try {
+               producer.send(message);
+               System.out.println("Message sent " + msg);
+            } catch (JMSException e) {
+               System.out.println("The broker has failed, try again");
+               producer.send(message);
+               System.out.println("Message sent " + msg);
+            }
             Thread.sleep(1000);
          }
       }
