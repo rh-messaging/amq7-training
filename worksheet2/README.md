@@ -22,8 +22,8 @@
 
 -   start both brokers
 ```code
-(broker1_home)/bin/artemis run 
-(broker2_home)/bin/artemis run 
+(broker1_home)/bin/artemis run
+(broker2_home)/bin/artemis run
 ```
 
 After some initial negotiation you should see each broker log that a bridge has been created.
@@ -80,9 +80,9 @@ NB you will see that only 1 consumer received the messages as they were load bal
 
 ## clustering a topic
 
-Both brokers need to be configured with the same anycast queue definition
+Both brokers need to be configured with the same multicast topic definition
 
--   Add an multicast queue configuration for both brokers
+-   Add an multicast topic configuration for both brokers
 ```xml
   <addresses>
      <address name="exampleTopic" type="multicast"/>
