@@ -73,3 +73,18 @@ The qdstat tool can be used to query management data from the router.  The -c op
 ```code
 qdstat -c
 ```
+
+
+## Using Docker
+
+If you have Docker, you can pull the following image which contains the RPMs:
+
+```code
+docker pull tedross/centos7-dispatch
+```
+
+To run this image, use the following command:
+
+```code
+docker run -i -t --net host tedross/centos7-dispatch
+```
