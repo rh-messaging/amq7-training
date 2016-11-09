@@ -14,12 +14,12 @@
 -   create live broker
 
 ```code
-(A_MQ_Install_Dir)/bin/artemis create --shared-store --failover-on-shutdown  --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword liveBroker
+(A_MQ_Install_Dir)/bin/artemis create --shared-store --failover-on-shutdown  --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword --max-hops 1 liveBroker
 ```
 -   create a backup broker
 
 ```code
- (A_MQ_Install_Dir)/bin/artemis create --shared-store --failover-on-shutdown --slave --data ../liveBroker/data --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword --port-offset 100 backupBroker
+ (A_MQ_Install_Dir)/bin/artemis create --shared-store --failover-on-shutdown --slave --data ../liveBroker/data --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword --max-hops 1 --port-offset 100 backupBroker
 ```
 
 Take a look at broker.xml for each broker to see what is needed
