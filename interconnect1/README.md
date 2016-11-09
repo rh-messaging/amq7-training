@@ -88,3 +88,25 @@ To run this image, use the following command:
 ```code
 docker run -i -t --net host tedross/centos7-dispatch
 ```
+
+## Broker Integration Notes
+
+Autolinks tell the router to establish links to the the queue on the broker.
+
+```code
+qdmanage create --type=autoLink addr=queue.one connection=broker dir=in
+qdmanage create --type=autoLink addr=queue.one connection=broker dir=out
+```
+
+Verify the creation using qdstat.
+
+```code
+qdstat --autolinks
+```
+
+A connector with role 'route-container' establishes a connection to a broker that can
+be used with autolinks.
+
+```code
+qdmanage create --type=connector host=127.0.0.1 port=61616 name=broker role=route-container
+```
