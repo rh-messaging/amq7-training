@@ -34,7 +34,7 @@ Also checkout the worksheets from git
 
     git clone https://github.com/rh-messaging/amq7-training.git
     
-Or if you haven't installed git you can downlod it from https://github.com/rh-messaging/amq7-training
+Or if you haven't installed git you can download it from https://github.com/rh-messaging/amq7-training
 by clicking 'clone or download'.
 
 
@@ -90,7 +90,7 @@ mvn verify -PqueueReceiver
 ### Using a topic
 
 -   Stop the Broker
--   Add a multicast type address with a queue 
+-   Add a multicast type address with a topic 
 ```xml 
   <addresses>
      <address name="exampleTopic" type="multicast"/>
@@ -130,7 +130,7 @@ mygroup=myuser
 Connection connection = cf.createConnection("myuser", "mypassword");
 ```
 
--   Update the Security Settins to only allow send role for the new user
+-   Update the Security Settings to only allow send role for the new user
 ```xml
 <security-setting match="#">
     <permission type="createNonDurableQueue" roles="admin"/>

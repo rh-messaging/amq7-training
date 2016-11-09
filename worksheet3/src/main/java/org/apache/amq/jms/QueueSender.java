@@ -46,7 +46,7 @@ public class QueueSender {
          MessageProducer producer = session.createProducer(queue);
          int msg = 0;
          while (true) {
-            TextMessage message = session.createTextMessage("this is the message" + (msg++));
+            TextMessage message = session.createTextMessage("this is the message " + (++msg));
             try {
                producer.send(message);
                System.out.println("Message sent " + msg);
