@@ -22,7 +22,16 @@
  (A_MQ_Install_Dir)/bin/artemis create --shared-store --failover-on-shutdown --slave --data ../liveBroker/data --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword --max-hops 1 --port-offset 100 backupBroker
 ```
 
-Take a look at broker.xml for each broker to see what is needed
+-   add a queue to each broker 
+```xml
+  <addresses>
+     <address name="exampleQueue" type="anycast">
+        <queues>
+           <queue name="exampleQueue"/>
+        </queues>
+     </address>
+  </addresses>
+```
 
 -   start both brokers
 ```code
@@ -86,11 +95,17 @@ $ARTEMIS_HOME/bin/artemis create --replicated --failover-on-shutdown  --user adm
 ```code
 $ARTEMIS_HOME/bin/artemis create --replicated --failover-on-shutdown --slave --user admin --password password --role admin --allow-anonymous y --clustered --host 127.0.0.1 --cluster-user clusterUser --cluster-password clusterPassword  --max-hops 1 --port-offset 100 repBackupBroker
 ```
--   now start both brokers
-
- Take a look at broker.xml for each broker to see what is needed
- 
- -   start both brokers
+-   add a queue to each broker 
+```xml
+  <addresses>
+     <address name="exampleQueue" type="anycast">
+        <queues>
+           <queue name="exampleQueue"/>
+        </queues>
+     </address>
+  </addresses>
+```
+-   start both brokers
  
  ```code
  (repLiveBrokerHome)/bin/artemis run
