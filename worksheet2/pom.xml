@@ -174,21 +174,4 @@
       </plugins>
    </build>
 
-   <properties>
-      <amq.version>2.0.0-SNAPSHOT</amq.version>
-   </properties>
-
-   <dependencies>
-      <dependency>
-         <groupId>org.apache.activemq</groupId>
-         <artifactId>artemis-core-client</artifactId>
-         <version>${amq.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>org.apache.activemq</groupId>
-         <artifactId>artemis-jms-client</artifactId>
-         <version>${amq.version}</version>
-      </dependency>
-   </dependencies>
-
 </project>
