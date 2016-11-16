@@ -130,7 +130,7 @@ $ARTEMIS_HOME/bin/artemis create --replicated --failover-on-shutdown --slave --u
 </ha-policy>
  ```
  
- Without this the live broker would just start without checking for a backup broker that has failed over so alwayd configure this
+ Without this the live broker would just start without checking for a backup broker that has failed over so always configure this
  
  -   Now restart the live broker
  
