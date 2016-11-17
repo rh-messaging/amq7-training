@@ -41,7 +41,8 @@ by clicking 'clone or download'.
 
 ### Install Broker
 
-Install A-MQ7 download zip from ? and install into ?
+Install A-MQ7 SNAPSHOT download zip from https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/rh-messaging/AMQ7/A-MQ7/7.0.0-SNAPSHOT/A-MQ7-7.0.0-20161115.042517-83-bin.zip and install into ?
+(or https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/rh-messaging/AMQ7/A-MQ7/7.0.0-SNAPSHOT/A-MQ7-7.0.0-20161115.042517-83-bin.tar.gz )
 
 ### Create an instance
 
