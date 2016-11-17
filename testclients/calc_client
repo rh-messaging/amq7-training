@@ -1,0 +1,102 @@
+#!/usr/bin/env python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from __future__ import print_function
+import optparse
+try:
+    import Queue
+except:
+    import queue as Queue
+import sys
+import threading
+from proton import Message
+from proton.reactor import ApplicationEvent, Container, EventInjector
+from proton.handlers import MessagingHandler, TransactionHandler
+
+class CalcClient(MessagingHandler):
+    def __init__(self, server):
+        super(CalcClient, self).__init__()
+        self.server = server
+        self.requests = Queue.Queue()
+        self.responses = Queue.Queue()
+        self.ready = Queue.Queue()
+
+    def on_start(self, event):
+        self.container = event.container
+        self.conn = self.container.connect(self.server)
+        self.sender = self.container.create_sender(self.conn, "calc")
+        self.receiver = self.container.create_receiver(self.conn, None, dynamic=True)
+
+    def on_link_opened(self, event):
+        if event.receiver == self.receiver:
+            self.address = self.receiver.remote_source.address
+            self.ready.put(self.address)
+
+    def on_message(self, event):
+        self.responses.put(event.message)
+
+    def on_request(self, event):
+        while not self.requests.empty():
+            self.sender.send(self.requests.get(False))
+
+    def on_quit(self, event):
+        self.conn.close()
+
+
+parser = optparse.OptionParser(usage="usage: %prog [options]",
+                               description="Simple calculation service.")
+parser.add_option("-s", "--server", default="localhost:5672",
+                  help="server to connect to")
+opts, args = parser.parse_args()
+
+try:
+    client = CalcClient(opts.server)
+    reactor = Container(client)
+    events = EventInjector()
+    reactor.selectable(events)
+    thread = threading.Thread(target=reactor.run)
+    thread.daemon=True
+    thread.start()
+
+    client.ready.get()
+    while True:
+        print("Enter 'add', 'subtract' or 'quit'")
+        op = sys.stdin.readline().strip()
+        if op == 'quit':
+            events.trigger(ApplicationEvent("quit"))
+            break;
+        if op != 'add' and op != 'subtract':
+            print('bad option', op)
+            continue
+        while True:
+            print("Enter integer")
+            v = sys.stdin.readline()
+            try:
+                value = int(v)
+                break
+            except ValueError as ve:
+                print('not an integer: %s' % v)
+        client.requests.put(Message(subject=op, correlation_id=client.address, body=value, reply_to=client.address))
+        events.trigger(ApplicationEvent("request"))
+        response = client.responses.get()
+        print("Result: %s" % response.body)
+except KeyboardInterrupt: pass
+
+
