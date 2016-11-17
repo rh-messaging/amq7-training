@@ -2,7 +2,7 @@
 ## Install prerequisites
 
 RHEL7 or Centos7
- 
+
 
 ## Get Beta-1 RPMs
 
@@ -16,11 +16,19 @@ wget http://download.eng.bos.redhat.com/brewroot/packages/qpid-dispatch/0.7.0/2.
 
 wget http://download.eng.bos.redhat.com/brewroot/packages/qpid-dispatch/0.7.0/2.el7/x86_64/qpid-dispatch-tools-0.7.0-2.el7.x86_64.rpm
 
-
 ## Install RPMs
 
 yum -y install *.rpm
 
+## Alternatives
+
+### RHEL subscription manager
+
+https://docs.google.com/document/d/1F_VY3huIXgs_cChGMDsBEnZTUmVS8t9cEKdIjD-TL18/edit
+
+### EPEL (upstream packages)
+
+https://qpid.apache.org/packages.html
 
 ## Configure the Router to be in a Network
 
