@@ -41,28 +41,11 @@ by clicking 'clone or download'.
 
 ### Install Broker
 
-Install A-MQ7 SNAPSHOT download zip from https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/rh-messaging/AMQ7/A-MQ7/7.0.0-SNAPSHOT/A-MQ7-7.0.0-20161115.042517-83-bin.zip and install into ?
-(or https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/rh-messaging/AMQ7/A-MQ7/7.0.0-SNAPSHOT/A-MQ7-7.0.0-20161115.042517-83-bin.tar.gz )
+Download the latest version of the Broker from https://developers.redhat.com/products/amq/download/.
 
-### Create an instance
+Follow the install instructions at https://developers.redhat.com/products/amq/hello-world and create and run an AMQ 7 Broker
+instance.
 
-Create an instance of A-MQ7
-```code
-(A_MQ_Install_Dir)/bin/artemis create myBroker
-```
-### Test The Broker with the CLI and Console
-Start the broker
-```code
-(myBroker_home)/bin/artemis run
-```
-In a separate shell run the CLI to consume from a default address from the worksheet1 directory 
-```code
-(myBroker_home)/bin/artemis consumer
-```
-In a separate shell run the CLI to produce to the same default address from the worksheet1 directory 
-```code
-(A_MQ_Instance_Dir)/bin/artemis producer
-```
 Goto http://localhost:8161/hawtio/login and log in using the default user/pass you created when the A-MQ7 instance was created.
 
 ### Using a Queue
